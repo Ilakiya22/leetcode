@@ -16,15 +16,17 @@ class Solution {
          Node cur = head;
         while(cur != null){
             if(cur.child != null){
-                Node tail = cur.child;
-                while(tail.next != null){
-                    tail = tail.next;
-                }
-                tail.next = cur.next;
-                if(cur.next != null) cur.next.prev = tail;
-                cur.next = cur.child;
-                cur.child.prev = cur;
-                cur.child = null;
+               Node next=cur.next;
+               cur.next=flatten(cur.child);
+               cur.next.prev=cur;
+               cur.child=null;
+               while(cur.next!=null){
+                cur=cur.next;
+               }
+               if(next!=null){
+                cur.next=next;
+                next.prev=cur;
+               }
             }
             cur = cur.next;
         }
