@@ -1,6 +1,6 @@
 class Solution {
     public int arrangeCoins(int n) {
-       int i=1;
+        int i=1;
        while(n>0){
         i++;
         n=n-i;
